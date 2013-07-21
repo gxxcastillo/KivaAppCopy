@@ -8,9 +8,8 @@
 
 KivaApp.SettingsController = M.Controller.extend({
 
-	message:null
-	,balance:null
-   
+	message:''
+	,balance:''
 	,init: function() {
 
 	//	KivaApp.Tabs.activeTab =  NO;
@@ -45,11 +44,10 @@ KivaApp.SettingsController = M.Controller.extend({
 			kv.phoneGap.localStorage.aes.setItem('oauth.request_token.token', data.oauth_token);
 			kv.phoneGap.localStorage.aes.setItem('oauth.request_token.token_secret', data.oauth_token_secret);
 
-			$('#'+KivaApp.KivaWebView.content.container.webview.id).html('<iframe id="kv_webview" style="border: 0; width: 100%; height: 100%;" src="'+kv.oauth.authorizeUrl+'&oauth_token='+data.oauth_token+'&display=mobile&hasHeader=false&scope=user_balance,user_email,user_loan_balances,user_anon_lender_loans,user_anon_lender_teams"/>');
-
-	            var current_page = ['kivaWebView', KivaApp.Tabs.lendTab];
-	            KivaApp.FlowController.buildStack(current_page);
-	            KivaApp.SettingsController.switchToPage('kivaWebView');
+			$('#'+KivaApp.KivaWebView.content.container.webview.id).html('<iframe id="kv_webview" style="border: 0; width: 100%; height: 100%;" src="'+kv.oauth.authorizeUrl+'&oauth_token='+data.oauth_token+'&display=mobile&hasHeader=false&scope=user_balance,user_email,user_loan_balances,user_anon_lender_loans,user_anon_lender_teams,user_basket_edit,user_basket_list,user_basket_checkout"/>');
+				var current_page = ['kivaWebView', KivaApp.Tabs.lendTab];
+				KivaApp.FlowController.buildStack(current_page);
+				KivaApp.SettingsController.switchToPage('kivaWebView');
 		});
 	}
 
@@ -67,7 +65,7 @@ KivaApp.SettingsController = M.Controller.extend({
 				kv.phoneGap.localStorage.aes.setItem('user_account.lender_id', data.user_account.lender_id);
 				kv.phoneGap.localStorage.aes.setItem('user_account.first_name', data.user_account.first_name);
 				kv.phoneGap.localStorage.aes.setItem('user_account.last_name', data.user_account.last_name);
-                        	KivaApp.FlowController.popStack();
+							KivaApp.FlowController.popStack();
 				KivaApp.SettingsController.switchToPage('kivaConnectWebView'); 
 				// make a switch to page for a mostly empty page like the login page
 
