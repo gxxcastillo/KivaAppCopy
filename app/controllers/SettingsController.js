@@ -122,7 +122,9 @@ KivaApp.SettingsController = M.Controller.extend({
 				KivaApp.SettingsController.set('balance', "Account: $"+data.user_balance.balance);
 
             });
-		}
+		} else {
+            KivaApp.SettingsController.set('balance', '');
+        }
 	}
 	
 });
