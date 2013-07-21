@@ -114,19 +114,15 @@ KivaApp.SettingsController = M.Controller.extend({
 	}
 	,getBalance: function() {
 		if (oauth_token = kv.phoneGap.localStorage.aes.getItem('oauth.access_token.token')) {
-        	var oauth_token_secret = kv.phoneGap.localStorage.aes.getItem('oauth.access_token.token_secret');
-
+			var oauth_token_secret = kv.phoneGap.localStorage.aes.getItem('oauth.access_token.token_secret');
 			var balanceUrl = 'https://api.kivaws.org/v1/my/balance.json';
-
-            kv.oauth.fetchResource(balanceUrl, oauth_token, oauth_token_secret, function(data) {
+			kv.oauth.fetchResource(balanceUrl, oauth_token, oauth_token_secret, function(data) {
 				KivaApp.SettingsController.set('balance', "Account: $"+data.user_balance.balance);
-
-            });
+			});
 		} else {
-            KivaApp.SettingsController.set('balance', '');
-        }
+			KivaApp.SettingsController.set('balance', '');
+		}
 	}
-	
 });
 
 
