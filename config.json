@@ -1,0 +1,98 @@
+{
+	"name" : "KivaApp",
+	"displayName" : "Kiva.org",
+	"mode": "debug",
+	"_mode": "production",
+	"debugLevel": 1,
+	"eliminate": false,
+	"_eliminate": true,
+	"minify": false,
+	"_minify": true,
+	"_excludedFolders": "lib",
+	"proxies": [
+		{
+			"baseUrl": "http://localhost/KivaApp/index.html",
+			"proxyAlias": "myServer"
+		}
+		
+	],
+	"htmlHeader": [
+		"<meta charset=\"utf-8\">",
+		"<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">",
+		"<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">",
+		"<link rel=\"apple-touch-icon\" href=\"theme/images/Icon-72.png\" />",
+		"<link rel=\"apple-touch-icon\" href=\"theme/images/Icon.png\" />",
+		"<link rel=\"apple-touch-icon\" href=\"theme/images/Icon@2x.png\" />",
+		"<link rel=\"stylesheet\" href=\"theme/KivaMobile.css\" />",
+		"<link rel=\"stylesheet\" href=\"theme/KivaMobile.min.css\" />"
+	],
+	"application": {
+		"version": "0.0.1",
+		"debugMode": true,
+		"useTransitions": true,
+		"keyPrefix": "#m#",
+		"keySuffix": "_",
+		"timeStampCreated": "created_at",
+		"timeStampUpdated": "updated_at",
+		"m_id": "m_id",
+		"environment": "dev",
+		"_dev_environment": "dev",
+		"_qa_environment": "qa",
+		"_stage_environment": "stage",
+		"_prod_environment": "prod"
+	},
+	"libraries":[
+		{"name": "kiva", "refs": ["kiva.js"]},
+		{"name": "cordova", "refs": ["*"]},
+		{"name": "kv.phoneGap.localStorage", "refs": ["kv.phoneGap.localStorage.js"]},
+		{"name": "CryptoJS.AES", "refs": ["aes.js"]},
+		{"name": "sha1", "refs": ["sha1.js"]},
+		{"name": "kv.oauth", "refs": ["kv.oauth.js"]},
+		{"name": "wlsFramework", "refs": ["*"]}
+		
+	],
+	"package": {
+		"IOSConfig": {
+			"method": "PhoneGap",
+			"os": "iOS",
+			"sdk": "iphonesimulator5.0",
+			"package": "com.kiva.mobile.ios",
+			"activity": "KivaApp",
+		        "mode": "debug",
+		        "_mode": "release",
+			"plists": {
+				"PhoneGap": {
+					"Plugins": {
+					}
+				}
+			},
+			"autoScaleIcon": true
+		},
+		"AndroidConfig": {
+			"method": "PhoneGap",
+		        "os": "Android",
+		        "sdk": "android-10",
+		        "package": "org.kiva.mobile.android",
+		        "activity": "KivaApp",
+		        "mode": "debug",
+		        "_mode": "release",
+		        "manifest":{
+		          "-android:versionCode": "1",
+		          "-android:versionName": "0.0.1",
+		          "uses-permission": [
+		          	{ "-android:name":"android.permission.GET_ACCOUNTS" },
+		            { "-android:name":"android.permission.READ_CONTACTS" },
+		            { "-android:name":"android.permission.WRITE_CONTACTS" }
+		          ],
+		          "uses-sdk": { "-android:minSdkVersion": "10" }
+		        },
+        		"autoScaleIcon": true
+		}
+	},
+	"plugins": {
+		"org.apache.cordova.ContactManager": "Contacts",
+		"org.apache.cordova.facebook.ConnectPlugin": "cdv-plugin-fb-connect",
+		"com.phonegap.plugins.analytics.GoogleAnalyticsTracker": "analytics"
+		
+	}
+}

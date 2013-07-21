@@ -1,0 +1,44 @@
+Kiva Mobile App
+Coded by Willow Solem
+
+Built on The M Project (http://www.the-m-project.org/)
+
+=Setup=
+
+Download and install The M Project (http://www.the-m-project.org/)
+
+Install the Bower package manager
+npm install bower -g
+
+Install the Kiva SDK
+bower install https://github.com/kiva/kiva.js.git
+cd KivaApp/frameworks/kiva
+ln -s ../../components/kiva.js/kiva.js kiva.js
+
+Install the PhoneGap plugins
+bower install https://github.com/purplecabbage/phonegap-plugins.git
+bower install https://github.com/davejohnson/phonegap-plugin-facebook-connect.git
+cd KivaApp/plugins/
+cd plugins/ConnectPlugin/assets/
+ln -s ../../../lib/phonegap-plugin-facebook-connect/www/cdv-plugin-fb-connect.js cdv-plugin-fb-connect.js
+cd -
+cd plugins/ConnectPlugin/src/org/apache/cordova/facebook/
+ln -s ../../../lib/phonegap-plugin-facebook-connect/native/android/src/org/apache/cordova/facebook/ConnectPlugin.java ConnectPlugin.java
+cd - 
+cd plugins/GoogleAnalyticsTracker/assets/
+ln -s ../../../lib/phonegap-plugins/Android/Analytics/2.0/www/analytics.js analytics.js
+cd - 
+cd plugins/GoogleAnalyticsTracker/src/com/phonegap/plugins/analytics/
+ln -s ../../../lib/phonegap-plugins/Android/Analytics/2.0/src/com/phonegap/plugins/analytics/GoogleAnalyticsTracker.java GoogleAnalyticsTracker.java
+
+Install Cordova (for using phonegap)
+git clone https://github.com/phonegap/phonegap.git
+mkdir lib/phonegap
+cp path/to/phonegap/androidOrIos/cordova.js KivaApp/lib/phonegap 
+mkdir frameworks/cordova
+ln -s KivaApp/lib/phonegap/cordova.js KivaApp/frameworks/cordova/cordova.js
+
+Run the Espresso server:
+cd ../../..
+espresso server
+
